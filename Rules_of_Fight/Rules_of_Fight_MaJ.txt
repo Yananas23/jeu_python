@@ -1,0 +1,25 @@
+Rules of Fight MaJ
+
+V1:
+Colisions ==> OK
+Dégat + barre qui touche "l'ennemi" ==> OK
+timer ==> OK
+barre de vie ==> OK
+
+V2:
+changé les carrés en de plus beau visuel (.pyxres) ==> OK
+documention ==> OK
+écran d'acceuil + controle + écran de fin ==> OK
+
+V3:
+décor de fond + sons (.pyxres) ==> OK
+clignotement d'invincibilité ==> OK
+
+V4:
+saut ==> OK
+attaque spéciale à distance ==> OK
+attaque des 2 cotés ==> OK
+refaire la fenetre des controles ==> OK
+
+V5:
+bouton cliquable pour accéder au menu et lancer une partie ==> OK
