@@ -476,7 +476,7 @@ class Jeu:
         pyxel.blt( 92, 8, 0, 24, 24, 8, 8, 15) #Bas droite / Bottom right
         
         #Séparation. / Separation.
-        pyxel.rect(29, 17, 72, 0.5, 0)
+        pyxel.rect(29, 17, 72, 0.5, 3)
         pyxel.text( 54, 20, 'POINTS', 7)
 
         #Affichage des points. / Display of the points.
@@ -527,7 +527,7 @@ class Jeu:
         pyxel.blt( 92, 8, 0, 24, 24, 8, 8, 15) #Bas droite / Bottom right
         
         #Séparation. / Separation.
-        pyxel.rect(29, 17, 72, 0.5, 0)
+        pyxel.rect(29, 17, 72, 0.5, 3)
         pyxel.text( 49, 20, 'CONTROLES', 7)
         
         #Affichage du déplacement à gauche. / Displays the left movement.
@@ -572,7 +572,7 @@ class Jeu:
         pyxel.blt( 92, 8, 0, 24, 24, 8, 8, 15) #Bas droite / Bottom right
         
         #Séparation. / Separation.
-        pyxel.rect(29, 17, 72, 0.5, 0)
+        pyxel.rect(29, 17, 72, 0.5, 3)
         pyxel.text( 54, 20, 'BONUS', 7)
 
         #Affichage des points. / Displays the points.
@@ -580,7 +580,7 @@ class Jeu:
         pyxel.text( 20, 38, 'RALENTIT LE TEMPS', 7)        
         
         pyxel.blt( 10, 56, 0, 56, 32, 8, 8, 15) #Ombre / Shadow
-        pyxel.text( 20, 58, 'ACCELERE VOTRE doodle["speed"]', 7)
+        pyxel.text( 20, 58, 'ACCELERE VOTRE VITESSE', 7)
 
         pyxel.blt( 10, 76, 0, 48, 40, 8, 8, 15) #Carotte / Carrot
         pyxel.text( 20, 78, 'MEILLEUR VISION', 7)
@@ -781,16 +781,16 @@ class Appli:
         pyxel.text( 43, 10, 'Fruit World', 7)
         
         #Affiche la grosse pomme. / Display the big apple.
-        pyxel.blt( 30, 10, 0, 0, 16, 8, 8, 15) #Haut gauche / Top left
-        pyxel.blt( 38, 10, 0, 8, 16, 8, 8, 15) #Haut droite / Top right
-        pyxel.blt( 30, 18, 0, 0, 24, 8, 8, 15) #Bas gauche / Bottom left
-        pyxel.blt( 38, 18, 0, 8, 24, 8, 8, 15) #Bas droite / Bottom right
+        pyxel.blt( 30, 0, 0, 0, 16, 8, 8, 15) #Haut gauche / Top left
+        pyxel.blt( 38, 0, 0, 8, 16, 8, 8, 15) #Haut droite / Top right
+        pyxel.blt( 30, 8, 0, 0, 24, 8, 8, 15) #Bas gauche / Bottom left
+        pyxel.blt( 38, 8, 0, 8, 24, 8, 8, 15) #Bas droite / Bottom right
         
         #Affiche la grosse bombe. / Display the big bomb.
-        pyxel.blt( 84, 10, 0, 16, 16, 8, 8, 15) #Haut gauche / Top left
-        pyxel.blt( 92, 10, 0, 24, 16, 8, 8, 15) #Haut droite / Top right
-        pyxel.blt( 84, 18, 0, 16, 24, 8, 8, 15) #Bas gauche / Bottom left
-        pyxel.blt( 92, 18, 0, 24, 24, 8, 8, 15) #Bas droite / Bottom right
+        pyxel.blt( 84, 0, 0, 16, 16, 8, 8, 15) #Haut gauche / Top left
+        pyxel.blt( 92, 0, 0, 24, 16, 8, 8, 15) #Haut droite / Top right
+        pyxel.blt( 84, 8, 0, 16, 24, 8, 8, 15) #Bas gauche / Bottom left
+        pyxel.blt( 92, 8, 0, 24, 24, 8, 8, 15) #Bas droite / Bottom right
         #Séparation. / Separation.
         pyxel.rect(29, 17, 72, 0.5, 3)
         
