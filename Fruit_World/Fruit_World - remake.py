@@ -102,9 +102,6 @@ class Jeu:
         self.minute = 0
         self.seconde = 0
         
-                #Langue du jeu / Language of the game
-        self.langage = "fr"
-        
         #Lancement du jeu / Launch of the game
         self.ecran = 0
         pyxel.run(self.update_acceuil, self.draw_acceuil)
@@ -344,11 +341,26 @@ class Jeu:
         """Fonction gérant la langue. / Function managing the language."""
         
         if pyxel.btn(pyxel.KEY_F): #jeu en français / game in french
-            self.langue = 1
+            self.langage = [pyxel. text( 14, 40, 'PRESSEZ P POUR LES POINTS', 7), pyxel.text( 9, 60, 'PRESSEZ C POUR LES CONTROLES', 7),
+                            pyxel.text( 15, 80, 'PRESSEZ B POUR LES BONUS', 7), pyxel.text( 16, 100, 'PRESSEZ S POUR DEMARRER', 7),
+                            pyxel.text( 83, 78, 'Vous', 7), pyxel.text( 20, 110, 'PRESSEZ R POUR REVENIR', 7), pyxel.text( 49, 20, 'CONTROLES', 7),
+                            pyxel.text( 44, 40, 'ou', 7), pyxel.text( 65, 40, 'Gauche', 7), pyxel.text( 44, 60, 'ou', 7), pyxel.text( 65, 60, 'Droite', 7),
+                            pyxel.text( 65, 80, 'SAUT', 7), ( 20, 110, 'PRESSEZ R POUR REVENIR', 7),
+                            pyxel.text( 20, 38, 'RALENTIT LE TEMPS', 7), pyxel.text( 20, 58, 'ACCELERE VOTRE VITESSE', 7),
+                            pyxel.text( 20, 78, 'MEILLEUR VISION', 7), pyxel.text( 20, 98, 'PLUS DE BOMBES', 7),
+                            pyxel.text( 20, 115, 'PRESSEZ R POUR REVENIR', 7), pyxel.text( 18, 110, 'PRESSEZ S POUR REDEMARRER', 7)]
+            print(self.langage[0], self.langage)
             pyxel.run(self.update_menu,self.draw_menu)
             
         elif pyxel.btn(pyxel.KEY_E): #jeu en anglais / game in english
-            self.langue = 0
+            self.langage = [( 24, 40, 'PRESS P TO SEE POINTS', 7), ( 20, 60, 'PRESS C TO SEE CONTROLS', 7),
+                            ( 25, 80, 'PRESS B TO SEE BONUS', 7), ( 31, 100, 'PRESS S TO START', 7),
+                            ( 83, 78, 'YOU', 7),( 30, 110, 'PRESS R TO RETURN', 7), ( 49, 20, 'CONTROLS', 7),
+                            ( 44, 40, 'or', 7), ( 65, 40, 'LEFT', 7), ( 44, 60, 'or', 7), ( 65, 60, 'RIGHT', 7),
+                            ( 65, 80, 'JUMP', 7), ( 30, 110, 'PRESS R TO RETURN', 7), ( 54, 20, 'BONUS', 7),
+                            ( 20, 38, 'SLOW THE TIME', 7), ( 20, 58, 'MAKE YOU FASTER', 7),
+                            ( 20, 78, 'YOU WILL SEE BETER', 7), ( 20, 98, 'NO BOMB', 7),
+                            ( 30, 115, 'PRESS R TO RETURN', 7), ( 30, 110, 'PRESS S TO RESTART', 7)]
             pyxel.run(self.update_menu,self.draw_menu)
             
             
@@ -486,7 +498,7 @@ class Jeu:
         pyxel.rect(29, 17, 72, 0.5, 3)
         
         #Écran des points. / Points screen.
-        pyxel.text( 14, 40, 'PRESSEZ P POUR LES POINTS', 7)
+        self.langage[0:5]
         
         #Écran des Controles. / Controls screen.
         pyxel.text( 9, 60, 'PRESSEZ C POUR LES CONTROLES', 7)
