@@ -60,7 +60,9 @@ class Jeu:
         '''Fonction créant toutes les variables utiles au jeu./Function creating all variables useful to the game.'''
 
         #Chargement des visuels./Loading visuals.
+        pyxel.init(128, 128, title="Fruit World", quit_key=pyxel.KEY_ESCAPE)
         pyxel.load('Fruit_World.pyxres')
+
 
         #Info de base du personnage / Basic info of the character
         self.doodle = {"speed":4, 
@@ -100,10 +102,13 @@ class Jeu:
         self.minute = 0
         self.seconde = 0
         
+                #Langue du jeu / Language of the game
+        self.langage = "fr"
+        
         #Lancement du jeu / Launch of the game
         self.ecran = 0
-        pyxel.run(self.update_accueil,self.draw_accueil)
-
+        pyxel.run(self.update_acceuil, self.draw_acceuil)
+        
 
     def doodle_deplacement(self):
         '''Fonction pour les déplacements. / Function for movements.'''
@@ -334,31 +339,42 @@ class Jeu:
             if self.timer == 0:
                 self.ecran = 0
                 pyxel.run(self.update_fin,self.draw_fin)
+                
+    def langue(self):
+        """Fonction gérant la langue. / Function managing the language."""
+        
+        if pyxel.btn(pyxel.KEY_F): #jeu en français / game in french
+            self.langue = 1
+            pyxel.run(self.update_menu,self.draw_menu)
+            
+        elif pyxel.btn(pyxel.KEY_E): #jeu en anglais / game in english
+            self.langue = 0
+            pyxel.run(self.update_menu,self.draw_menu)
             
             
     def lancement(self):
-        '''Lancement du jeu après l'écran d'accueil, la fin de partie ou les paramètres. / Launch of the game after the home screen, the end of the game or the parameters.'''
+        '''Lancement du jeu après le menu, la fin de partie ou les paramètres. / Launch of the game after the menu, the end of the game or the parameters.'''
         
-        if pyxel.btn(pyxel.KEY_S) and self.ecran == 0:
+        if pyxel.btn(pyxel.KEY_S) and self.ecran == 0: #Lancement du jeu. / Launch of the game.
             self.ecran = 1
             self.reset()
             pyxel.run(self.update_corps,self.draw_corps)
             
-        elif pyxel.btn(pyxel.KEY_C) and self.ecran == 0:
+        elif pyxel.btn(pyxel.KEY_C) and self.ecran == 0: #Affichage des contrôles. / Display of the controls.
             self.ecran = 2
             pyxel.run(self.update_param,self.draw_param)
             
-        elif pyxel.btn(pyxel.KEY_P) and self.ecran == 0:
+        elif pyxel.btn(pyxel.KEY_P) and self.ecran == 0: #Affichage des points. / Display of the points.
             self.ecran = 2
             pyxel.run(self.update_pts,self.draw_pts)
             
-        elif pyxel.btn(pyxel.KEY_B) and self.ecran == 0:
+        elif pyxel.btn(pyxel.KEY_B) and self.ecran == 0: #Affichage des bonus. / Display of the bonuses.
             self.ecran = 2
             pyxel.run(self.update_bonus,self.draw_bonus)
             
-        elif pyxel.btn(pyxel.KEY_R) and self.ecran == 2:
+        elif pyxel.btn(pyxel.KEY_R) and self.ecran == 2: #Retour au menu. / Back to the menu.
             self.ecran = 0
-            pyxel.run(self.update_accueil,self.draw_accueil)
+            pyxel.run(self.update_menu,self.draw_menu)
             
             
     def reset(self):
@@ -411,14 +427,45 @@ class Jeu:
             self.astre["x4"] = 128
             self.astre["y4"] = 128
             
-
+    def update_acceuil(self):
+        '''Checks the launch of the game./Vérifie le lancement du jeu.'''
+        self.lancement()
+        self.langue()
+        
+    def draw_acceuil(self):
+        '''Displays the home screen./Affiche l'écran d'acceuil'''
+        pyxel.cls(6)
+        pyxel.text( 43, 10, 'Fruit World', 7)
+        
+        #Affiche la grosse pomme. / Display the big apple.
+        pyxel.blt( 30, 0, 0, 0, 16, 8, 8, 15) #Haut gauche / Top left
+        pyxel.blt( 38, 0, 0, 8, 16, 8, 8, 15) #Haut droite / Top right
+        pyxel.blt( 30, 8, 0, 0, 24, 8, 8, 15) #Bas gauche / Bottom left
+        pyxel.blt( 38, 8, 0, 8, 24, 8, 8, 15) #Bas droite / Bottom right
+        
+        #Affiche la grosse bombe. / Display the big bomb.
+        pyxel.blt( 84, 0, 0, 16, 16, 8, 8, 15) #Haut gauche / Top left
+        pyxel.blt( 92, 0, 0, 24, 16, 8, 8, 15) #Haut droite / Top right
+        pyxel.blt( 84, 8, 0, 16, 24, 8, 8, 15) #Bas gauche / Bottom left
+        pyxel.blt( 92, 8, 0, 24, 24, 8, 8, 15) #Bas droite / Bottom right
+        #Séparation. / Separation.
+        pyxel.rect(29, 17, 72, 0.5, 3)
+        
+        #Jeu en Français.
+        pyxel.text( 18, 50, 'PRESSEZ F POUR FRANCAIS', 7)
+        
+        #Game in English.
+        pyxel.text( 24, 80, 'PRESS E FOR ENGLISH', 7)
+        
+        #Crédit. / Credit.
+        pyxel.text( 5, 120, 'RENAUD CORP.', 7)
  
                  
-    def update_accueil(self):
+    def update_menu(self):
         '''Vérifie le lancement du jeu. / Check the launch of the game.'''
         self.lancement()
         
-    def draw_accueil(self):
+    def draw_menu(self):
         '''Affiche l'écran d'accueil. / Displays the home screen.'''
         pyxel.cls(6)
         pyxel.text( 43, 10, 'Fruit World', 7)
@@ -748,61 +795,6 @@ class Jeu:
         pyxel.blt( 92, 10, 0, 24, 16, 8, 8, 15) #Haut droite / Top right
         pyxel.blt( 84, 18, 0, 16, 24, 8, 8, 15) #Bas gauche / Bottom left
         pyxel.blt( 92, 18, 0, 24, 24, 8, 8, 15) #Bas droite / Bottom right
- 
-class Appli:
-    '''Class gérant l'application./Class managing the application.'''
-    
-    def __init__(self):
-        '''Fonction créant la fenêtre./Function creating the window.'''
 
-        #Taille de la fenêtre et chargement des visuels
-        pyxel.init(128, 128, title="Fruit World", quit_key=pyxel.KEY_ESCAPE)
-        pyxel.load('Fruit_World.pyxres')
-        
-        pyxel.run(self.update, self.draw)
-        
-    def lancement(self):
-        '''Launch the game/Lance le jeu'''
-        
-        if pyxel.btn(pyxel.KEY_F): #Jeu en Français
-            Jeu()
-            
-        elif pyxel.btn(pyxel.KEY_E): #Game in English
-            Jeu()
-            
-
-    def update(self):
-        '''Checks the launch of the game./Vérifie le lancement du jeu.'''
-        self.lancement()
-        
-    def draw(self):
-        '''Displays the home screen./Affiche l'écran d'acceuil'''
-        pyxel.cls(6)
-        pyxel.text( 43, 10, 'Fruit World', 7)
-        
-        #Affiche la grosse pomme. / Display the big apple.
-        pyxel.blt( 30, 0, 0, 0, 16, 8, 8, 15) #Haut gauche / Top left
-        pyxel.blt( 38, 0, 0, 8, 16, 8, 8, 15) #Haut droite / Top right
-        pyxel.blt( 30, 8, 0, 0, 24, 8, 8, 15) #Bas gauche / Bottom left
-        pyxel.blt( 38, 8, 0, 8, 24, 8, 8, 15) #Bas droite / Bottom right
-        
-        #Affiche la grosse bombe. / Display the big bomb.
-        pyxel.blt( 84, 0, 0, 16, 16, 8, 8, 15) #Haut gauche / Top left
-        pyxel.blt( 92, 0, 0, 24, 16, 8, 8, 15) #Haut droite / Top right
-        pyxel.blt( 84, 8, 0, 16, 24, 8, 8, 15) #Bas gauche / Bottom left
-        pyxel.blt( 92, 8, 0, 24, 24, 8, 8, 15) #Bas droite / Bottom right
-        #Séparation. / Separation.
-        pyxel.rect(29, 17, 72, 0.5, 3)
-        
-        #Jeu en Français.
-        pyxel.text( 18, 50, 'PRESSEZ F POUR FRANCAIS', 7)
-        
-        #Game in English.
-        pyxel.text( 24, 80, 'PRESS E FOR ENGLISH', 7)
-        
-        #Crédit. / Credit.
-        pyxel.text( 5, 120, 'RENAUD CORP.', 7)
-        
-
-#Lancement de l'application. / Launch of the application.
-Appli()
+#Lancement du jeu. / Launch of the game.
+Jeu()
