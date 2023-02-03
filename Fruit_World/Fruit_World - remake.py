@@ -341,15 +341,14 @@ class Jeu:
         """Fonction gérant la langue. / Function managing the language."""
         
         if pyxel.btn(pyxel.KEY_F): #jeu en français / game in french
-            self.langage = [pyxel. text( 14, 40, 'PRESSEZ P POUR LES POINTS', 7), pyxel.text( 9, 60, 'PRESSEZ C POUR LES CONTROLES', 7),
-                            pyxel.text( 15, 80, 'PRESSEZ B POUR LES BONUS', 7), pyxel.text( 16, 100, 'PRESSEZ S POUR DEMARRER', 7),
-                            pyxel.text( 83, 78, 'Vous', 7), pyxel.text( 20, 110, 'PRESSEZ R POUR REVENIR', 7), pyxel.text( 49, 20, 'CONTROLES', 7),
-                            pyxel.text( 44, 40, 'ou', 7), pyxel.text( 65, 40, 'Gauche', 7), pyxel.text( 44, 60, 'ou', 7), pyxel.text( 65, 60, 'Droite', 7),
-                            pyxel.text( 65, 80, 'SAUT', 7), ( 20, 110, 'PRESSEZ R POUR REVENIR', 7),
-                            pyxel.text( 20, 38, 'RALENTIT LE TEMPS', 7), pyxel.text( 20, 58, 'ACCELERE VOTRE VITESSE', 7),
-                            pyxel.text( 20, 78, 'MEILLEUR VISION', 7), pyxel.text( 20, 98, 'PLUS DE BOMBES', 7),
-                            pyxel.text( 20, 115, 'PRESSEZ R POUR REVENIR', 7), pyxel.text( 18, 110, 'PRESSEZ S POUR REDEMARRER', 7)]
-            print(self.langage[0], self.langage)
+            self.langage = [( 14, 40, 'PRESSEZ P POUR LES POINTS', 7), ( 9, 60, 'PRESSEZ C POUR LES CONTROLES', 7),
+                            ( 15, 80, 'PRESSEZ B POUR LES BONUS', 7), ( 16, 100, 'PRESSEZ S POUR DEMARRER', 7),
+                            ( 83, 78, 'Vous', 7), ( 20, 110, 'PRESSEZ R POUR REVENIR', 7), ( 49, 20, 'CONTROLES', 7),
+                            ( 44, 40, 'ou', 7), ( 65, 40, 'Gauche', 7), ( 44, 60, 'ou', 7), ( 65, 60, 'Droite', 7),
+                            ( 65, 80, 'SAUT', 7), ( 20, 110, 'PRESSEZ R POUR REVENIR', 7),
+                            ( 20, 38, 'RALENTIT LE TEMPS', 7), ( 20, 58, 'ACCELERE VOTRE VITESSE', 7),
+                            ( 20, 78, 'MEILLEUR VISION', 7), ( 20, 98, 'PLUS DE BOMBES', 7),
+                            ( 20, 115, 'PRESSEZ R POUR REVENIR', 7), ( 18, 110, 'PRESSEZ S POUR REDEMARRER', 7)]
             pyxel.run(self.update_menu,self.draw_menu)
             
         elif pyxel.btn(pyxel.KEY_E): #jeu en anglais / game in english
@@ -498,16 +497,16 @@ class Jeu:
         pyxel.rect(29, 17, 72, 0.5, 3)
         
         #Écran des points. / Points screen.
-        self.langage[0:5]
+        pyxel.text(self.langage[0][0], self.langage[0][1], self.langage[0][2], self.langage[0][3])
         
         #Écran des Controles. / Controls screen.
-        pyxel.text( 9, 60, 'PRESSEZ C POUR LES CONTROLES', 7)
+        pyxel.text(self.langage[1][0], self.langage[1][1], self.langage[1][2], self.langage[1][3])
         
         #Écran des Bonus. / Bonus screen.
-        pyxel.text( 15, 80, 'PRESSEZ B POUR LES BONUS', 7)
+        pyxel.text(self.langage[2][0], self.langage[2][1], self.langage[2][2], self.langage[2][3])
         
         #Lancer le jeu. / Launch the game.
-        pyxel.text( 16, 100, 'PRESSEZ S POUR DEMARRER', 7)
+        pyxel.text(self.langage[3][0], self.langage[3][1], self.langage[3][2], self.langage[3][3])
         
         #Crédits. / Credits.
         pyxel.text( 5, 120, 'RENAUD CORP.', 7)
@@ -558,10 +557,10 @@ class Jeu:
         pyxel.blt(65, 78, 0, 32, 40, 8, 8, 7)
         pyxel.blt(73, 70, 0, 40, 32, 8, 8, 7)
         pyxel.blt(73, 78, 0, 40, 40, 8, 8, 7) #Personnage / Character
-        pyxel.text( 83, 78, 'Vous', 7)
+        pyxel.text(self.langage[4][0], self.langage[4][1], self.langage[4][2], self.langage[4][3])
         
         #Retourner à l'écran d'acceuil. / Return to the home screen.
-        pyxel.text( 20, 110, 'PRESSEZ R POUR REVENIR', 7)
+        pyxel.text(self.langage[5][0], self.langage[5][1], self.langage[5][2], self.langage[5][3])
         
         
     def update_param(self):
@@ -587,26 +586,26 @@ class Jeu:
         
         #Séparation. / Separation.
         pyxel.rect(29, 17, 72, 0.5, 3)
-        pyxel.text( 49, 20, 'CONTROLES', 7)
+        pyxel.text(self.langage[6][0], self.langage[6][1], self.langage[6][2], self.langage[6][3])
         
         #Affichage du déplacement à gauche. / Displays the left movement.
         pyxel.blt( 34, 38, 0, 24, 0, 8, 8, 1)
-        pyxel.text( 44, 40, 'ou', 7)
+        pyxel.text(self.langage[7][0], self.langage[7][1], self.langage[7][2], self.langage[7][3])
         pyxel.blt( 54, 38, 0, 40, 8, 8, 8, 1)
-        pyxel.text( 65, 40, 'Gauche', 7)
+        pyxel.text(self.langage[8][0], self.langage[8][1], self.langage[8][2], self.langage[8][3])
         
         #Affichage du déplacement à droite. / Displays the right movement.
         pyxel.blt( 34, 58, 0, 24, 8, 8, 8, 1)
-        pyxel.text( 44, 60, 'ou', 7)
+        pyxel.text(self.langage[9][0], self.langage[9][1], self.langage[9][2], self.langage[9][3])
         pyxel.blt( 54, 58, 0, 40, 0, 8, 8, 1)
-        pyxel.text( 65, 60, 'Droite', 7)
+        pyxel.text(self.langage[10][0], self.langage[10][1], self.langage[10][2], self.langage[10][3])
         
         #Affichage du saut. / Displays the jump.
         pyxel.rect( 39, 79, 20, 6, 0)
-        pyxel.text( 65, 80, 'SAUT', 7)
+        pyxel.text(self.langage[11][0], self.langage[11][1], self.langage[11][2], self.langage[11][3])
         
         #Retourner à l'écran d'acceuil. / Return to the home screen.
-        pyxel.text( 20, 110, 'PRESSEZ R POUR REVENIR', 7)
+        pyxel.text(self.langage[12][0], self.langage[12][1], self.langage[12][2], self.langage[12][3])
         
         
     def update_bonus(self):
@@ -636,19 +635,19 @@ class Jeu:
 
         #Affichage des points. / Displays the points.
         pyxel.blt( 10, 36, 0, 48, 32, 8, 8, 15) #Chrono / Chrono
-        pyxel.text( 20, 38, 'RALENTIT LE TEMPS', 7)        
+        pyxel.text(self.langage[13][0], self.langage[13][1], self.langage[13][2], self.langage[13][3])        
         
         pyxel.blt( 10, 56, 0, 56, 32, 8, 8, 15) #Ombre / Shadow
-        pyxel.text( 20, 58, 'ACCELERE VOTRE VITESSE', 7)
+        pyxel.text(self.langage[14][0], self.langage[14][1], self.langage[14][2], self.langage[14][3])
 
         pyxel.blt( 10, 76, 0, 48, 40, 8, 8, 15) #Carotte / Carrot
-        pyxel.text( 20, 78, 'MEILLEUR VISION', 7)
+        pyxel.text(self.langage[15][0], self.langage[15][1], self.langage[15][2], self.langage[15][3])
 
         pyxel.blt( 10, 96, 0, 56, 40, 8, 8, 15) #Bombe Dorée / Golden Bomb
-        pyxel.text( 20, 98, 'PLUS DE BOMBES', 7)
+        pyxel.text(self.langage[16][0], self.langage[16][1], self.langage[16][2], self.langage[16][3])
         
         #Retourner à l'écran d'acceuil. / Return to the home screen.
-        pyxel.text( 20, 115, 'PRESSEZ R POUR REVENIR', 7)
+        pyxel.text(self.langage[17][0], self.langage[17][1], self.langage[17][2], self.langage[17][3])
         
         
     def update_corps(self):
@@ -794,7 +793,7 @@ class Jeu:
         pyxel.cls(6)
         pyxel.text( 43, 20, 'Fruit World', 7)
         pyxel.text( 32, 64,'SCORE: ' + str(self.score) + ' POINTS', 7)
-        pyxel.text( 18, 110, 'PRESSEZ S POUR REDEMARRER', 7)
+        pyxel.text(self.langage[18][0], self.langage[18][1], self.langage[18][2], self.langage[18][3])
         
         #Affiche la grosse pomme. / Display the big apple.
         pyxel.blt( 30, 10, 0, 0, 16, 8, 8, 15) #Haut gauche / Top left
